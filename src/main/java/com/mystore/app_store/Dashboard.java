@@ -6,11 +6,11 @@ package com.mystore.app_store;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import com.mystore.app_store.api.ApiLogin;
+import static com.mystore.app_store.api.ApiLogin.ESTADO;
 import com.mystore.app_store.api.ApiProducto;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import static java.awt.Color.white;
-import java.awt.event.ActionEvent;
+import javax.swing.JButton;
 import javax.swing.UIManager;
 
 /**
@@ -19,8 +19,11 @@ import javax.swing.UIManager;
  */
 public class Dashboard extends javax.swing.JFrame {
     
+ApiLogin apiLogin = new ApiLogin();
+Boolean mostrar = apiLogin.ESTADO;
 
-    
+     public static  Boolean pgUser = false;
+     
     int xMouse, yMouse;
     
     /**
@@ -28,14 +31,19 @@ public class Dashboard extends javax.swing.JFrame {
      */
     public Dashboard() {
         initComponents();
-        
+
          accederLogin();
-         cargarBarraNavegacion();
+         Navegador.mostrarUsuarioPrueba(pgUser, content);
+         cargarBarraNavegacion(mostrar);
+         
+         
 
-
+        
              InitStyles();
     }
-
+    
+    
+    
    public void accederLogin(){
        ApiLogin apiLogin = new ApiLogin();
        Boolean validacionSesion = apiLogin.ESTADO;
@@ -58,9 +66,9 @@ public class Dashboard extends javax.swing.JFrame {
    }
    
 
-   public void cargarBarraNavegacion(){
-
-                Navegador navegador = new Navegador();
+   public void cargarBarraNavegacion(Boolean mostrar){
+ if(mostrar == true){
+          Navegador navegador = new Navegador();
 
          navegador.setSize(250, 490);
           navegador.setLocation(0,0);
@@ -68,8 +76,10 @@ public class Dashboard extends javax.swing.JFrame {
           panelNavegacion.add(navegador, BorderLayout.CENTER);
           panelNavegacion.validate();
           panelNavegacion.repaint();
-          System.out.println( "deben colocar el panel");    
+     }
+         
    }
+
  
     private void InitStyles() {
       //  boton1.putClientProperty( "JButton.buttonType", "roundRect" );
@@ -274,15 +284,35 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitMousePressed
 
     private void mostrarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarMenuMouseClicked
-        //        PageLogin p1 = new PageLogin();
-        //        p1.setSize(970, 490);
-        //        p1.setLocation(0,0);
-        //
-        //        content.removeAll();
-        //        content.add(p1, BorderLayout.CENTER);
-        //        content.validate();
-        //        content.repaint();
+                if(ESTADO == true){
+                    cargarBarraNavegacion(true);
+                }else{
+                javax.swing.JOptionPane.showMessageDialog(this, "no se puedes mostrar el menu porque no tienes acceso, por favor Inicia Sesion");
+                }
+                
+//                if(pgUser == true){
+//                 PageUsuario pgUsuario = new PageUsuario();
+//        
+//        pgUsuario.setSize(970, 490);
+//        pgUsuario.setLocation(0,0);
+//
+//        content.removeAll();
+//        content.add(pgUsuario, BorderLayout.CENTER);
+//        content.validate();
+//        content.repaint();
+//        System.out.println("debe colocar el usuario");}
+//                else{
+//                    System.out.println("NO debe colocar el usuario");
+//                }
+
+Navegador.mostrarUsuarioPrueba(pgUser, content);
+        
+        
     }//GEN-LAST:event_mostrarMenuMouseClicked
+
+    public  JButton getMostrarMenu() {
+        return mostrarMenu;
+    }
 
     private void mostrarMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarMenuMouseEntered
 
@@ -327,4 +357,12 @@ public class Dashboard extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 
+    
+    public void setContent(javax.swing.JPanel content) {
+    this.content = content;
+}
+
+public javax.swing.JPanel getContent() {
+    return content;
+}
 }

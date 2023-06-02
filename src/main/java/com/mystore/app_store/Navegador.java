@@ -4,12 +4,34 @@
  */
 package com.mystore.app_store;
 
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import javax.swing.JPanel;
+
 /**
  *
  * @author User
  */
 public class Navegador extends javax.swing.JPanel {
 
+  public static void mostrarUsuarioPrueba(Boolean permitir, JPanel content){
+       if(permitir == true){
+         
+                 PageUsuario pgUsuario = new PageUsuario();
+        
+        pgUsuario.setSize(970, 490);
+        pgUsuario.setLocation(0,0);
+
+        content.removeAll();
+        content.add(pgUsuario, BorderLayout.CENTER);
+        content.validate();
+        content.repaint();
+        System.out.println("debe colocar el usuario");}
+                else{
+                    System.out.println("NO debe colocar el usuario");
+                }
+       }
+    
     /**
      * Creates new form Navegador
      */
@@ -144,8 +166,11 @@ public class Navegador extends javax.swing.JPanel {
 //        content.repaint();
     }//GEN-LAST:event_btnProductoMouseClicked
 
-    private void btnUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarioMouseClicked
+      
+//    public  void mostrarPageUsuario(JPanel content){
+//
 //        PageUsuario pgUsuario = new PageUsuario();
+//        
 //        pgUsuario.setSize(970, 490);
 //        pgUsuario.setLocation(0,0);
 //
@@ -153,6 +178,14 @@ public class Navegador extends javax.swing.JPanel {
 //        content.add(pgUsuario, BorderLayout.CENTER);
 //        content.validate();
 //        content.repaint();
+//        System.out.println("debe colocar el usuario");
+//       }
+    
+    private void btnUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarioMouseClicked
+      Dashboard.pgUser = true;
+      System.out.println("debe colocar el usuario ya que pgUser es true");
+      
+
     }//GEN-LAST:event_btnUsuarioMouseClicked
 
 
