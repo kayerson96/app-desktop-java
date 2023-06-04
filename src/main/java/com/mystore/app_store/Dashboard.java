@@ -11,6 +11,7 @@ import com.mystore.app_store.api.ApiProducto;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
@@ -19,8 +20,16 @@ import javax.swing.UIManager;
  */
 public class Dashboard extends javax.swing.JFrame {
     
+    
+     public void setBtnUsuarioVisible(boolean visible) {
+        btnUsuario.setVisible(visible);
+    }
+    
 ApiLogin apiLogin = new ApiLogin();
-Boolean mostrar = apiLogin.ESTADO;
+
+ Boolean mostrar = apiLogin.ESTADO;
+ 
+
 
      public static  Boolean pgUser = false;
      
@@ -31,20 +40,36 @@ Boolean mostrar = apiLogin.ESTADO;
      */
     public Dashboard() {
         initComponents();
-
-         accederLogin();
-         Navegador.mostrarUsuarioPrueba(pgUser, content);
-         cargarBarraNavegacion(mostrar);
-         
-         
-
+        btnUsuario.setVisible(false);
+        btnConfig.setVisible(false);
         
+        if(ESTADO == false){btnInicio.setText("MOSTRAR MAS OPCIONES");}
+         accederLogin();
              InitStyles();
     }
     
     
     
+
+    
+//    public void mostrarBotones(Boolean permitir){
+//    if(permitir == false ){
+//        
+//               
+//        btnUsuario.setVisible(false );
+//        System.out.println("debe ocultar boton" + permitir );
+//           }else {
+//         btnUsuario.setVisible(true);
+//         btnUsuario.repaint();
+//        System.out.println("debe mostrar boton" + permitir );
+//       
+//    }     
+//        
+//    }
+ 
    public void accederLogin(){
+       
+            pgUser = false;
        ApiLogin apiLogin = new ApiLogin();
        Boolean validacionSesion = apiLogin.ESTADO;
        
@@ -66,38 +91,40 @@ Boolean mostrar = apiLogin.ESTADO;
    }
    
 
-   public void cargarBarraNavegacion(Boolean mostrar){
- if(mostrar == true){
-          Navegador navegador = new Navegador();
-
-         navegador.setSize(250, 490);
-          navegador.setLocation(0,0);
-          panelNavegacion.removeAll();
-          panelNavegacion.add(navegador, BorderLayout.CENTER);
-          panelNavegacion.validate();
-          panelNavegacion.repaint();
-     }
+//   public void cargarBarraNavegacion(Boolean mostrar){
+// if(mostrar == true){
+//          Navegador navegador = new Navegador();
+//
+//         navegador.setSize(250, 490);
+//          navegador.setLocation(0,0);
+//          panelNavegacion.removeAll();
+//          panelNavegacion.add(navegador, BorderLayout.CENTER);
+//          panelNavegacion.validate();
+//          panelNavegacion.repaint();
+//     }
          
-   }
-
- 
+//   }
+  
     private void InitStyles() {
       //  boton1.putClientProperty( "JButton.buttonType", "roundRect" );
     }
     
-    
-    
-  
+
  
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
         panelNavegacion = new javax.swing.JPanel();
+        navegator = new javax.swing.JPanel();
+        btnCatalogo = new javax.swing.JButton();
+        btnInicio = new javax.swing.JButton();
+        btnProducto = new javax.swing.JButton();
+        btnUsuario = new javax.swing.JButton();
+        btnConfig = new javax.swing.JButton();
         barra = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         btnExit = new javax.swing.JLabel();
-        mostrarMenu = new javax.swing.JButton();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,15 +140,101 @@ Boolean mostrar = apiLogin.ESTADO;
 
         panelNavegacion.setBackground(new java.awt.Color(43, 141, 156));
 
+        navegator.setBackground(new java.awt.Color(43, 141, 156));
+
+        btnCatalogo.setBackground(new java.awt.Color(43, 141, 156));
+        btnCatalogo.setText("CATALOGO");
+        btnCatalogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnInicio.setBackground(new java.awt.Color(43, 141, 156));
+        btnInicio.setText("INICIO");
+        btnInicio.setToolTipText("");
+        btnInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnInicioMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnInicioMouseEntered(evt);
+            }
+        });
+        btnInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInicioActionPerformed(evt);
+            }
+        });
+
+        btnProducto.setBackground(new java.awt.Color(43, 141, 156));
+        btnProducto.setText("PRODUCTOS");
+        btnProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductoMouseClicked(evt);
+            }
+        });
+
+        btnUsuario.setBackground(new java.awt.Color(43, 141, 156));
+        btnUsuario.setText("USUARIOS");
+        btnUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUsuarioMouseClicked(evt);
+            }
+        });
+
+        btnConfig.setBackground(new java.awt.Color(43, 141, 156));
+        btnConfig.setText("CONFIGURACION");
+        btnConfig.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout navegatorLayout = new javax.swing.GroupLayout(navegator);
+        navegator.setLayout(navegatorLayout);
+        navegatorLayout.setHorizontalGroup(
+            navegatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navegatorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(navegatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCatalogo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUsuario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConfig, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                    .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        navegatorLayout.setVerticalGroup(
+            navegatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navegatorLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(btnCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnConfig, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout panelNavegacionLayout = new javax.swing.GroupLayout(panelNavegacion);
         panelNavegacion.setLayout(panelNavegacionLayout);
         panelNavegacionLayout.setHorizontalGroup(
             panelNavegacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 250, Short.MAX_VALUE)
+            .addGroup(panelNavegacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelNavegacionLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(navegator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         panelNavegacionLayout.setVerticalGroup(
             panelNavegacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(panelNavegacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelNavegacionLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(navegator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         bg.add(panelNavegacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 250, 490));
@@ -176,24 +289,6 @@ Boolean mostrar = apiLogin.ESTADO;
                 .addContainerGap())
         );
 
-        mostrarMenu.setBackground(new java.awt.Color(43, 141, 156));
-        mostrarMenu.setText("MOSTRAR MENÚ");
-        mostrarMenu.setToolTipText("");
-        mostrarMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        mostrarMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mostrarMenuMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                mostrarMenuMouseEntered(evt);
-            }
-        });
-        mostrarMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrarMenuActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
         barra.setLayout(barraLayout);
         barraLayout.setHorizontalGroup(
@@ -201,18 +296,12 @@ Boolean mostrar = apiLogin.ESTADO;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(barraLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(mostrarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         barraLayout.setVerticalGroup(
             barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(barraLayout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(mostrarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(110, Short.MAX_VALUE))
         );
 
         bg.add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 150));
@@ -283,44 +372,64 @@ Boolean mostrar = apiLogin.ESTADO;
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExitMousePressed
 
-    private void mostrarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarMenuMouseClicked
-                if(ESTADO == true){
-                    cargarBarraNavegacion(true);
-                }else{
-                javax.swing.JOptionPane.showMessageDialog(this, "no se puedes mostrar el menu porque no tienes acceso, por favor Inicia Sesion");
-                }
-                
-//                if(pgUser == true){
-//                 PageUsuario pgUsuario = new PageUsuario();
-//        
-//        pgUsuario.setSize(970, 490);
-//        pgUsuario.setLocation(0,0);
-//
-//        content.removeAll();
-//        content.add(pgUsuario, BorderLayout.CENTER);
-//        content.validate();
-//        content.repaint();
-//        System.out.println("debe colocar el usuario");}
-//                else{
-//                    System.out.println("NO debe colocar el usuario");
-//                }
+    private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
+        if(ESTADO ==true ){
+         btnUsuario.setVisible(true);
+        btnConfig.setVisible(true);
+        btnInicio.setText("INICIO");
 
-Navegador.mostrarUsuarioPrueba(pgUser, content);
+        
+        System.out.println(ESTADO);}
+        else{
+        javax.swing.JOptionPane.showMessageDialog(this, "Debes iniciar Sesion");
+        accederLogin();
+        }
         
         
-    }//GEN-LAST:event_mostrarMenuMouseClicked
+//        PageLogin p1 = new PageLogin();
+        //        p1.setSize(970, 490);
+        //        p1.setLocation(0,0);
+        //
+        //        content.removeAll();
+        //        content.add(p1, BorderLayout.CENTER);
+        //        content.validate();
+        //        content.repaint();
+    }//GEN-LAST:event_btnInicioMouseClicked
 
-    public  JButton getMostrarMenu() {
-        return mostrarMenu;
-    }
+    private void btnInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseEntered
 
-    private void mostrarMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mostrarMenuMouseEntered
+    }//GEN-LAST:event_btnInicioMouseEntered
 
-    }//GEN-LAST:event_mostrarMenuMouseEntered
-
-    private void mostrarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarMenuActionPerformed
+    private void btnInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_mostrarMenuActionPerformed
+    }//GEN-LAST:event_btnInicioActionPerformed
+
+    private void btnProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductoMouseClicked
+                PageProduct pgProduct = new PageProduct();
+                pgProduct.setSize(970, 490);
+                pgProduct.setLocation(0,0);
+        
+                content.removeAll();
+                content.add(pgProduct, BorderLayout.CENTER);
+                content.validate();
+                content.repaint();
+    }//GEN-LAST:event_btnProductoMouseClicked
+
+    private void btnUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuarioMouseClicked
+     if(mostrar = true){
+           PageUsuario pgUsuario = new PageUsuario();
+        
+        pgUsuario.setSize(970, 490);
+        pgUsuario.setLocation(0,0);
+
+        content.removeAll();
+        content.add(pgUsuario, BorderLayout.CENTER);
+        content.validate();
+        content.repaint();
+        System.out.println("debe colocar el usuario");}
+  
+                
+    }//GEN-LAST:event_btnUsuarioMouseClicked
 
   
     public static void main(String args[]) {
@@ -349,14 +458,21 @@ Navegador.mostrarUsuarioPrueba(pgUser, content);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barra;
     private javax.swing.JPanel bg;
+    private javax.swing.JButton btnCatalogo;
+    private javax.swing.JButton btnConfig;
     private javax.swing.JLabel btnExit;
+    private javax.swing.JButton btnInicio;
+    private javax.swing.JButton btnProducto;
+    private javax.swing.JButton btnUsuario;
     private javax.swing.JPanel content;
     private javax.swing.JPanel header;
-    private javax.swing.JButton mostrarMenu;
+    private javax.swing.JPanel navegator;
     private javax.swing.JPanel panelNavegacion;
     // End of variables declaration//GEN-END:variables
 
-
+ public javax.swing.JButton manipularUsuariobtn(){
+    return btnUsuario;
+ };
     
     public void setContent(javax.swing.JPanel content) {
     this.content = content;
@@ -364,5 +480,9 @@ Navegador.mostrarUsuarioPrueba(pgUser, content);
 
 public javax.swing.JPanel getContent() {
     return content;
+}
+
+public javax.swing.JButton getBtnInicio() {
+    return btnInicio;
 }
 }

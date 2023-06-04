@@ -5,6 +5,7 @@
 package com.mystore.app_store;
 
 import com.mystore.app_store.DTO.Usuario;
+import static com.mystore.app_store.Dashboard.pgUser;
 import com.mystore.app_store.api.ApiLogin;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -18,17 +19,28 @@ import javax.swing.JTextField;
  */
 public class PageLogin extends javax.swing.JPanel {
 
+     private Dashboard dashboard;
+
+    public void setDashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
+    }
+
+    public void cambiarVisibilidadBtnUsuario(boolean visible) {
+        if (dashboard != null) {
+            dashboard.setBtnUsuarioVisible(visible);
+        }
+    }
+    
+    
     /**
      * Creates new form Page1
      */
     public PageLogin() {
-
+   
         initComponents();
     }
 
-    
-    
-    
+   
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -175,9 +187,9 @@ public class PageLogin extends javax.swing.JPanel {
 
     private void btnIniciarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIniciarMouseClicked
          
-   
-        
-        
+     Dashboard dashboard = new Dashboard();
+setDashboard(dashboard);
+cambiarVisibilidadBtnUsuario(true);
         
                 String usuarioLogin = usuario.getText();
         String claveLogin = new String(clave.getPassword());
@@ -195,8 +207,6 @@ Boolean estadoLogin = ApiLogin.enviarLogin(usuarioLogin, claveLogin);
           bgPageOne.add(pgProduct, BorderLayout.CENTER);
           bgPageOne.validate();
           bgPageOne.repaint();
-          
-          Dashboard dashboard = new  Dashboard();
           
         }else{
              javax.swing.JOptionPane.showMessageDialog(this, "DATOS EQUIVOCADOS ");
