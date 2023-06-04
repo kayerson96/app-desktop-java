@@ -10,9 +10,10 @@ import static com.mystore.app_store.api.ApiLogin.ESTADO;
 import com.mystore.app_store.api.ApiProducto;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.UIManager;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -40,6 +41,7 @@ ApiLogin apiLogin = new ApiLogin();
      */
     public Dashboard() {
         initComponents();
+        thread.start();
         btnUsuario.setVisible(false);
         btnConfig.setVisible(false);
         
@@ -48,24 +50,6 @@ ApiLogin apiLogin = new ApiLogin();
              InitStyles();
     }
     
-    
-    
-
-    
-//    public void mostrarBotones(Boolean permitir){
-//    if(permitir == false ){
-//        
-//               
-//        btnUsuario.setVisible(false );
-//        System.out.println("debe ocultar boton" + permitir );
-//           }else {
-//         btnUsuario.setVisible(true);
-//         btnUsuario.repaint();
-//        System.out.println("debe mostrar boton" + permitir );
-//       
-//    }     
-//        
-//    }
  
    public void accederLogin(){
        
@@ -90,23 +74,9 @@ ApiLogin apiLogin = new ApiLogin();
        } 
    }
    
-
-//   public void cargarBarraNavegacion(Boolean mostrar){
-// if(mostrar == true){
-//          Navegador navegador = new Navegador();
-//
-//         navegador.setSize(250, 490);
-//          navegador.setLocation(0,0);
-//          panelNavegacion.removeAll();
-//          panelNavegacion.add(navegador, BorderLayout.CENTER);
-//          panelNavegacion.validate();
-//          panelNavegacion.repaint();
-//     }
-         
-//   }
   
     private void InitStyles() {
-      //  boton1.putClientProperty( "JButton.buttonType", "roundRect" );
+//      btnInicio.putClientProperty( "JButton.buttonType", "roundRect" );
     }
     
 
@@ -125,6 +95,7 @@ ApiLogin apiLogin = new ApiLogin();
         barra = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         btnExit = new javax.swing.JLabel();
+        labelHora = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -280,14 +251,17 @@ ApiLogin apiLogin = new ApiLogin();
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1183, Short.MAX_VALUE))
+                .addContainerGap(1183, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        labelHora.setFont(new java.awt.Font("Courier New", 1, 18)); // NOI18N
+        labelHora.setText("jLabel1");
 
         javax.swing.GroupLayout barraLayout = new javax.swing.GroupLayout(barra);
         barra.setLayout(barraLayout);
@@ -296,12 +270,18 @@ ApiLogin apiLogin = new ApiLogin();
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, barraLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelHora, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         barraLayout.setVerticalGroup(
             barraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(barraLayout.createSequentialGroup()
                 .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(labelHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         bg.add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1220, 150));
@@ -466,23 +446,41 @@ ApiLogin apiLogin = new ApiLogin();
     private javax.swing.JButton btnUsuario;
     private javax.swing.JPanel content;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel labelHora;
     private javax.swing.JPanel navegator;
     private javax.swing.JPanel panelNavegacion;
     // End of variables declaration//GEN-END:variables
 
- public javax.swing.JButton manipularUsuariobtn(){
-    return btnUsuario;
- };
-    
-    public void setContent(javax.swing.JPanel content) {
-    this.content = content;
-}
 
-public javax.swing.JPanel getContent() {
-    return content;
-}
+    //el siguiente codigo muestra la hora
+    Thread thread = new Thread(() -> {
+                while (true) {
+                    // Obtener la hora actual
+                    LocalTime horaActual = LocalTime.now();
+                    
+                LocalDateTime fechaHoraActual = LocalDateTime.now();
+                    
+                   
+                    
+                    //formatear la hora
+                 
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+                    String horaFormateada = horaActual.format(formatter);
+                    
+                    //formatear la fecha
+                    DateTimeFormatter formatterFecha = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                     String fechaFormateada = fechaHoraActual.format(formatterFecha);
+                    
+                    
+                     // Actualizar el texto del JLabel
+                    labelHora.setText("Hora: "+horaFormateada.toString() + " FECHA: "+fechaFormateada);
+                    try {
+                        // Esperar un segundo antes de actualizar nuevamente
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
 
-public javax.swing.JButton getBtnInicio() {
-    return btnInicio;
-}
 }

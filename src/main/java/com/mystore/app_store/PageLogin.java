@@ -61,7 +61,7 @@ public class PageLogin extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelLogin.setBackground(new java.awt.Color(255, 255, 255));
+        panelLogin.setBackground(new java.awt.Color(255, 153, 153));
 
         separadorUsuario.setBackground(new java.awt.Color(0, 0, 0));
         separadorUsuario.setForeground(new java.awt.Color(0, 0, 0));
@@ -69,8 +69,10 @@ public class PageLogin extends javax.swing.JPanel {
         separadorClave.setBackground(new java.awt.Color(0, 0, 0));
         separadorClave.setForeground(new java.awt.Color(0, 0, 0));
 
-        usuario.setBackground(new java.awt.Color(255, 255, 255));
+        usuario.setBackground(new java.awt.Color(255, 153, 153));
+        usuario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         usuario.setForeground(new java.awt.Color(102, 102, 102));
+        usuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         usuario.setText("usuario");
         usuario.setBorder(null);
         usuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -104,7 +106,9 @@ public class PageLogin extends javax.swing.JPanel {
             }
         });
 
-        clave.setBackground(new java.awt.Color(255, 255, 255));
+        clave.setBackground(new java.awt.Color(255, 153, 153));
+        clave.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        clave.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         clave.setText("jPasswordField1");
         clave.setBorder(null);
         clave.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,33 +127,35 @@ public class PageLogin extends javax.swing.JPanel {
         panelLoginLayout.setHorizontalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoginLayout.createSequentialGroup()
-                .addGap(0, 117, Short.MAX_VALUE)
                 .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
+                    .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addGap(173, 173, 173)
                         .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(separadorClave, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(separadorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(111, 111, 111))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
-                        .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(154, 154, 154))))
+                            .addComponent(separadorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(separadorClave, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addGap(215, 215, 215)
+                        .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         panelLoginLayout.setVerticalGroup(
             panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLoginLayout.createSequentialGroup()
-                .addGap(134, 134, 134)
+                .addGap(122, 122, 122)
                 .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(18, 18, 18)
                 .addComponent(clave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(separadorClave, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout bgPageOneLayout = new javax.swing.GroupLayout(bgPageOne);
@@ -157,16 +163,16 @@ public class PageLogin extends javax.swing.JPanel {
         bgPageOneLayout.setHorizontalGroup(
             bgPageOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgPageOneLayout.createSequentialGroup()
-                .addContainerGap(488, Short.MAX_VALUE)
+                .addContainerGap(210, Short.MAX_VALUE)
                 .addComponent(panelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+                .addGap(208, 208, 208))
         );
         bgPageOneLayout.setVerticalGroup(
             bgPageOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bgPageOneLayout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
+            .addGroup(bgPageOneLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(panelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         add(bgPageOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 490));
