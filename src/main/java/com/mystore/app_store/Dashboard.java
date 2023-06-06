@@ -5,9 +5,8 @@
 package com.mystore.app_store;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import com.mystore.app_store.api.ApiLogin;
-import static com.mystore.app_store.api.ApiLogin.ESTADO;
-import com.mystore.app_store.api.ApiProducto;
+import com.mystore.app_store.servicioApi.ApiLogin;
+import com.mystore.app_store.servicioApi.ApiProducto;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalTime;
@@ -26,9 +25,11 @@ public class Dashboard extends javax.swing.JFrame {
         btnUsuario.setVisible(visible);
     }
     
-ApiLogin apiLogin = new ApiLogin();
+     ApiLogin apiLogin = new ApiLogin();
 
- Boolean mostrar = apiLogin.ESTADO;
+ 
+ Boolean mostrar = ApiLogin.ESTADO;
+
  
 
 
@@ -44,8 +45,9 @@ ApiLogin apiLogin = new ApiLogin();
         thread.start();
         btnUsuario.setVisible(false);
         btnConfig.setVisible(false);
+
         
-        if(ESTADO == false){btnInicio.setText("MOSTRAR MAS OPCIONES");}
+        if(mostrar == false){btnInicio.setText("MOSTRAR MAS OPCIONES");}
          accederLogin();
              InitStyles();
     }
@@ -353,7 +355,9 @@ ApiLogin apiLogin = new ApiLogin();
     }//GEN-LAST:event_btnExitMousePressed
 
     private void btnInicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseClicked
-        if(ESTADO ==true ){
+        
+        Boolean ESTADO = ApiLogin.ESTADO;
+        if(ESTADO==true ){
          btnUsuario.setVisible(true);
         btnConfig.setVisible(true);
         btnInicio.setText("INICIO");
@@ -361,7 +365,7 @@ ApiLogin apiLogin = new ApiLogin();
         
         System.out.println(ESTADO);}
         else{
-        javax.swing.JOptionPane.showMessageDialog(this, "Debes iniciar Sesion");
+        javax.swing.JOptionPane.showMessageDialog(this, "POR FAVOR INICIA SESION");
         accederLogin();
         }
         

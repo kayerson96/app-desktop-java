@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mystore.app_store.api;
+package com.mystore.app_store.servicioApi;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mystore.app_store.Dashboard;
@@ -66,9 +66,10 @@ public class ApiLogin {
             
                 if(response.statusCode() == 200){
                     ESTADO = true;
+                    System.out.println(ESTADO);
                     
                 }
-            return ESTADO;
+            return this.ESTADO;
             
 
        }catch (Exception e) {

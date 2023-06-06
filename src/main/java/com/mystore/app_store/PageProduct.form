@@ -197,6 +197,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="nombre"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="nameAddMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="description">
               <Properties>
@@ -208,6 +211,8 @@
                 <Property name="text" type="java.lang.String" value="descripcion"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="descriptionAddMouseClicked"/>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="descriptionAddMouseEntered"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="descriptionAddActionPerformed"/>
               </Events>
             </Component>
@@ -247,6 +252,7 @@
                 <Property name="text" type="java.lang.String" value="Cantidad"/>
               </Properties>
               <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="quantityAddMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="quantityAddActionPerformed"/>
               </Events>
             </Component>

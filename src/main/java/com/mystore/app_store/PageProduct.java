@@ -5,10 +5,14 @@
 package com.mystore.app_store;
 
 import com.mystore.app_store.DTO.DatosProduct;
-import com.mystore.app_store.api.ApiProducto;
+import com.mystore.app_store.servicioApi.ApiProducto;
+import com.mystore.app_store.servicioApi.ApiRegistrarProducto;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.accessibility.AccessibleContext;
 import javax.swing.*;
 import javax.swing.event.EventListenerList;
@@ -89,10 +93,23 @@ public class PageProduct extends javax.swing.JPanel {
         name.setText("Nombre");
 
         nameAdd.setText("nombre");
+        nameAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nameAddMouseClicked(evt);
+            }
+        });
 
         description.setText("Descripción");
 
         descriptionAdd.setText("descripcion");
+        descriptionAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                descriptionAddMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                descriptionAddMouseEntered(evt);
+            }
+        });
         descriptionAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 descriptionAddActionPerformed(evt);
@@ -120,6 +137,11 @@ public class PageProduct extends javax.swing.JPanel {
         quantity.setText("Cantidad");
 
         quantityAdd.setText("Cantidad");
+        quantityAdd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                quantityAddMouseClicked(evt);
+            }
+        });
         quantityAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quantityAddActionPerformed(evt);
@@ -295,12 +317,55 @@ public class PageProduct extends javax.swing.JPanel {
         productos.add(producto);
         
         System.out.println(producto);
-//         javax.swing.JOptionPane.showMessageDialog(this, producto.toString());
+        
+       int result = JOptionPane.showOptionDialog(
+                null,
+                "¿Desea guardar el producto?",
+                "Confirmación",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                null,
+                null
+        );
+
+        if (result == JOptionPane.YES_OPTION) {
+            System.out.println("Ha seleccionado 'Sí'");
+            
+            ApiRegistrarProducto apiRegistrarProducto = new ApiRegistrarProducto();
+            try {
+                apiRegistrarProducto.enviarProducto(producto);
+            } catch (IOException ex) {
+                Logger.getLogger(PageProduct.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PageProduct.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        } else if (result == JOptionPane.NO_OPTION) {
+            System.out.println("Ha seleccionado 'NO'");
+        }
+    
     }//GEN-LAST:event_registerActionPerformed
 
     private void categoryAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryAddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_categoryAddActionPerformed
+
+    private void nameAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameAddMouseClicked
+        nameAdd.setText("");
+    }//GEN-LAST:event_nameAddMouseClicked
+
+    private void descriptionAddMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descriptionAddMouseEntered
+
+    }//GEN-LAST:event_descriptionAddMouseEntered
+
+    private void descriptionAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descriptionAddMouseClicked
+        descriptionAdd.setText("");
+    }//GEN-LAST:event_descriptionAddMouseClicked
+
+    private void quantityAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_quantityAddMouseClicked
+        quantityAdd.setText("");
+    }//GEN-LAST:event_quantityAddMouseClicked
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,9 +4,7 @@
  */
 package com.mystore.app_store;
 
-import com.mystore.app_store.DTO.Usuario;
-import static com.mystore.app_store.Dashboard.pgUser;
-import com.mystore.app_store.api.ApiLogin;
+import com.mystore.app_store.servicioApi.ApiLogin;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;

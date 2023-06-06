@@ -4,8 +4,8 @@
  */
 package com.mystore.app_store;
 
-import com.mystore.app_store.api.ApiLogin;
-import com.mystore.app_store.api.ApiUsuario;
+import com.mystore.app_store.servicioApi.ApiLogin;
+import com.mystore.app_store.servicioApi.ApiUsuario;
 import javax.swing.table.DefaultTableModel;
 
 /**
