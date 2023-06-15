@@ -145,6 +145,11 @@ public class Dashboard extends javax.swing.JFrame {
                 btnProductoMouseClicked(evt);
             }
         });
+        btnProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductoActionPerformed(evt);
+            }
+        });
 
         btnUsuario.setBackground(new java.awt.Color(43, 141, 156));
         btnUsuario.setText("USUARIOS");
@@ -414,6 +419,10 @@ public class Dashboard extends javax.swing.JFrame {
   
                 
     }//GEN-LAST:event_btnUsuarioMouseClicked
+
+    private void btnProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductoActionPerformed
 
   
     public static void main(String args[]) {

@@ -9,7 +9,8 @@ package com.mystore.app_store;
  * @author User
  */
 public class App_store {
-
+    
+Dashboard dasboard = new Dashboard();
     public static void main(String[] args) {
         System.out.println("Hello World!");
     }
